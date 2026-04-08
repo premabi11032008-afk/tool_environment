@@ -49,37 +49,17 @@ app = create_app(
 )
 
 
-def main(host: str = "0.0.0.0", port: int = 7860):
-    """
-    Entry point for direct execution via uv run or python -m.
-
-    This function enables running the server without Docker:
-        uv run --project . server
-        uv run --project . server --port 7860
-        python -m Optimal_Tool_Environment.server.app
-
-    Args:
-        host: Host address to bind to (default: "0.0.0.0")
-        port: Port number to listen on (default: 7860 for the hugging face)
-
-    For production deployments, consider using uvicorn directly with
-    multiple workers:
-        uvicorn Optimal_Tool_Environment.server.app:app --workers 4
-    """
+def main():
     import uvicorn
     import os
     from dotenv import load_dotenv
 
     load_dotenv()
-    port=int(os.getenv("PORT",7860))
+    host = "0.0.0.0"
+    port = int(os.getenv("PORT", 7860))
 
     uvicorn.run(app, host=host, port=port)
 
 
 if __name__ == "__main__":
-    import argparse
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--port", type=int, default=7860)
-    args = parser.parse_args()
-    main(port=args.port)
+    main()
