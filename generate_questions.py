@@ -41,8 +41,7 @@ You are an intelligent assistant that decides tool usage.
 
 Available tools:
 1. weather → use for weather queries(parameter:city:=string fo the city name)
-2. sql → use for database queries(parameter:query:=valid sql query in string)
-3. websearch → use for general knowledge or summaries(parameter:query:= valid search topic in string)
+2. websearch → use for general knowledge or summaries(parameter:query:= valid search topic in string)
 
 Context:
 {context}
@@ -149,7 +148,7 @@ Answer: {}""".format(question,text)
 def generate_episode():
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-    QUESTION_TYPES = ["weather", "websummarization"]
+    QUESTION_TYPES = ["weather", "websummarization","random_non_tool_question"]
 
     episode=[]
     context=[]

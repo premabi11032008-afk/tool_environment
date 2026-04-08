@@ -165,8 +165,7 @@ Instructions:
 
 Available tools:
 1. weather → use for weather queries(parameter:city:=string fo the city name)
-2. sql → use for database queries(parameter:query:=valid sql query in string)
-3. websearch → use for general knowledge or summaries(parameter:query:= valid search topic in string)
+2. websearch → use for general knowledge or summaries(parameter:query:= valid search topic in string)
 
 - Match tool names and parameters carefully
 - Provide semantically accurate answers
@@ -202,7 +201,7 @@ def get_model_message(client: OpenAI, step: int, last_echoed: str, last_reward: 
 async def main() -> None:
     client = OpenAI(base_url=API_BASE_URL, api_key=API_KEY)
 
-    env = await OptimalToolEnvironmentEnv.from_docker_image(IMAGE_NAME)
+    env = await OptimalToolEnvironmentEnv.from_docker_image(IMAGE_NAME,timeout=60)
 
     history: List[str] = []
     rewards: List[float] = []

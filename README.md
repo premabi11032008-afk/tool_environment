@@ -42,11 +42,6 @@ This environment provides **3 simple tools**:
 2. **weather**
    - Used for weather-related questions
    - Ensures factual correctness via API
-
-3. **sql**
-   - Used for structured database queries
-   - Tests logical reasoning and query generation
-
 ---
 
 ##  Reward Strategy (Optimized for Intelligence + Efficiency)
