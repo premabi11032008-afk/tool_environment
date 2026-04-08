@@ -21,7 +21,7 @@ def generate_question(context, q_type,llm):
         - 55 percent require tool usage
         - 45 percent depend on previous answer
         - Keep it short
-        -avoid any king to amigious question at all cost
+        -avoid any kind of amigious question at all cost
 
         Return only the question.
         """
