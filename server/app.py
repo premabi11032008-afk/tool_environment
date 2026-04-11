@@ -56,7 +56,7 @@ def main():
 
     load_dotenv()
     host = "0.0.0.0"
-    port = int(os.getenv("PORT", 7860))
+    port = int(os.getenv("PORT", 8000))
 
     uvicorn.run(app, host=host, port=port)
 
