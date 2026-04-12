@@ -201,7 +201,10 @@ def get_model_message(client: OpenAI, step: int, last_echoed: str, last_reward: 
 async def main() -> None:
     client = OpenAI(base_url=API_BASE_URL, api_key=API_KEY)
 
-    env = await OptimalToolEnvironmentEnv.from_docker_image(IMAGE_NAME)
+    try:
+        env = await OptimalToolEnvironmentEnv.from_docker_image(IMAGE_NAME)
+    except Exception as e:
+        print(str(e))
 
     history: List[str] = []
     rewards: List[float] = []
