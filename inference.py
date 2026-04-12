@@ -52,18 +52,22 @@ from client import OptimalToolEnvironmentAction,OptimalToolEnvironmentEnv
 
 load_dotenv()
 
-IMAGE_NAME = os.getenv("LOCAL_IMAGE_NAME") # If you are using docker image 
-API_KEY = os.getenv("HF_TOKEN") or os.getenv("API_KEY")
+try:
+    IMAGE_NAME = os.getenv("LOCAL_IMAGE_NAME") # If you are using docker image 
+    API_BASE_URL = os.environ["API_BASE_URL"]
+    API_KEY = os.environ["API_KEY"]
+    MODEL_NAME = os.environ["MODEL_NAME"]
 
-API_BASE_URL ="https://router.huggingface.co/v1"
-MODEL_NAME = "Qwen/Qwen2.5-72B-Instruct"
-TASK_NAME = os.getenv("MY_ENV_V4_TASK", "echo")
-BENCHMARK = os.getenv("MY_ENV_V4_BENCHMARK", "my_env_v4")
-MAX_STEPS = 8
-TEMPERATURE = 0.0
-MAX_TOKENS = 150
-SUCCESS_SCORE_THRESHOLD = 0.1  # normalized score in [0, 1]
 
+    TASK_NAME = os.getenv("MY_ENV_V4_TASK", "echo")
+    BENCHMARK = os.getenv("MY_ENV_V4_BENCHMARK", "my_env_v4")
+    MAX_STEPS = 8
+    TEMPERATURE = 0.0
+    MAX_TOKENS = 150
+    SUCCESS_SCORE_THRESHOLD = 0.1  # normalized score in [0, 1]
+
+except Exception as e:
+    print(str(e))
 
 # Max possible reward: each token contributes 0.1, across all steps
 _MAX_REWARD_PER_STEP = 1.0
