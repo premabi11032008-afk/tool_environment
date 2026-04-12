@@ -52,7 +52,7 @@ from client import OptimalToolEnvironmentAction,OptimalToolEnvironmentEnv
 
 load_dotenv()
 
-IMAGE_NAME = os.getenv("IMAGE_NAME") # If you are using docker image 
+IMAGE_NAME = os.getenv("LOCAL_IMAGE_NAME") # If you are using docker image 
 API_KEY = os.getenv("HF_TOKEN") or os.getenv("API_KEY")
 
 API_BASE_URL ="https://router.huggingface.co/v1"
